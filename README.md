@@ -6,9 +6,8 @@
 [Histogram]: ./output_images/histogram.png
 [LanePixelHeuristics]: ./output_images/heuristics_for_lane.png
 [SlidingWindow]: ./output_images/slidingwindowsearch.png
-[LaneColorMetrics: ./output_images/lanecolorwithmetrics.png
+[LaneColorMetrics]: ./output_images/lanecolorwithmetrics.png
 
-]
 ## Overview 
 In this project, I did:
  - Camera calibration, undistorting lens effects
@@ -49,17 +48,21 @@ Example image:
  - We then unwarp it back to the original plane using an inverse transform, and do a shading.
 Example:
 ![Sliding Window Search][SlidingWindow]
+![Histogram][Histogram]
 
 ## Curvature, distance from center of lane
 We compute two metrics relatable in the physical world. Distance of camera from center of the lane. Here we just assume camera is in the center of the frame. So, we mainly compute the lane ends in phyical distance units (metres). To get mapping of pixel to metres, we use world knowledge that a typical section of the lane is 3m long, and then see how much pixels a unit distance typically covers on the image.
 
 Curvature is computed through a formula from calculus / geometry, which just follows from the coefficients of the curve we estimated.
 
+Example image with lane colored and metrics:
+![Lane color metrics][LaneColorMetrics]
+
 ## Tracking
- - I implemented a tracker to reduce spurious lane detections. I keep a moving buffer for each lane. Based on the buffer history, I keep mean and standard deviation of the lane coefficients, and reject any lane curve that is too far from the mean (mean +/- 2 * sigma). When we don't have much data or sigma is 0, I use a fraction of the mean as the guide. And if there are too many rejections, then I clear my counters and start again. 
+ - I implemented a tracker to reduce spurious lane detections (implemented as `class LaneTracker`). I keep a moving buffer for each lane. Based on the buffer history, I keep mean and standard deviation of the lane coefficients, and reject any lane curve that is too far from the mean (mean +/- 2 * sigma). When we don't have much data or sigma is 0, I use a fraction of the mean as the guide. And if there are too many rejections, then I clear my counters and start again. 
  - Without tracking, the performance was pretty good but there were a few snippets of videos where there were spurious lane detections. With tracking, that is significantly improved
  - The final project video is [linked here](./project_video_output_tracking_compr.mp4).
- - This is a video before tracking: (./project_video_output_no_tracking.mp4)
+ - This is a [video before tracking](./project_video_output_no_tracking.mp4)
 
 ## Discussion
 
