@@ -68,7 +68,9 @@ Example image with lane colored and metrics:
 
 This was a fun project, as I got to understand some internals of camera calibration, distortion and doing the perspective transform. I also enjoyed learning about the heuristics, sliding window and liked  building the tracker and seeing it improve the spurious detections.
 
-One thing that would have helped is some labeled data on the lanes. That would have made it easier to identify heuristics for lanes (or even better just build a classifier for lane detection from labeled data). Same thing would have been used to quickly evaluate the efficacy of tracking.
+### Possible Improvements
+ - One thing that would have helped is some labeled data on the lanes. That would have made it easier to identify heuristics for lanes (or even better just build a classifier for lane detection from the labeled data). 
+ - Having a labeled dataset would have also helped to quantify the efficacy of tracking. It could also be used to set the parameters in a more informed way.
 
 
 
