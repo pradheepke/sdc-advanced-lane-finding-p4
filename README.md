@@ -1,5 +1,5 @@
 # Advanced Lane Finding
-
+√
 [//]: # (Image References)
 [Chessboard]: ./output_images/chessboard_undistort.png
 [TopdownView]: ./output_images/topdownview1.png
@@ -60,7 +60,7 @@ Example image with lane colored and metrics:
 
 ## Tracking
  - I implemented a tracker to reduce spurious lane detections (implemented as `class LaneTracker`). I keep a moving buffer for each lane. Based on the buffer history, I keep mean and standard deviation of the lane coefficients, and reject any lane curve that is too far from the mean (mean +/- 2 * sigma). When we don't have much data or sigma is 0, I use a fraction of the mean as the guide. And if there are too many rejections, then I clear my counters and start again. 
- - Without tracking, the performance was pretty good but there were a few snippets of videos where there were spurious lane detections. With tracking, that is significantly improved
+ - Without tracking, the performance was pretty good but there were a few snippets of videos where there were spurious lane detections. With tracking, that is significantly improved.
  - The final project video is [linked here](./project_video_output_tracking_compr.mp4).
  - This is a [video before tracking](./project_video_output_no_tracking.mp4)
 
@@ -70,7 +70,7 @@ This was a fun project, as I got to understand some internals of camera calibrat
 
 ### Possible Improvements
  - One thing that would have helped is some labeled data on the lanes. That would have made it easier to identify heuristics for lanes (or even better just build a classifier for lane detection from the labeled data). 
- - Having a labeled dataset would have also helped to quantify the efficacy of tracking. It could also be used to set the parameters in a more informed way.
+ - Having a labeled dataset would have also helped to quantify the efficacy of tracking. It could also be used to set the parameters (e.g: length of history) in a more informed way.
 
 
 
